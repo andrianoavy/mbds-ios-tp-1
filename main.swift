@@ -1,68 +1,63 @@
-// Dictionnaires
+// Soit les mots suivants: "bateau", "voiture", "vélo", "avion", "bus", "train", "moto”
 
-/*Considérez les objets suivants, modélisant des personnes caractérisés par leur nom, sexe et annee_naissance
+// 1.Créez un tableau en swift représentant ces mots
+var mots = ["bateau", "voiture", "vélo", "avion", "bus", "train", "moto"]
 
-(nom=Pierre, sexe=M, annee_naissance=2010)
-(nom=Michelle, sexe=F, annee_naissance=2008)
-(nom=Estelle, sexe=F, annee_naissance=2005)
-(nom=Quentin, sexe=M, annee_naissance=2010)
-(nom=Francois, sexe=M, annee_naissance=1980)
-(nom=Cristelle, sexe=F, annee_naissance=1995)
-*/
+// 2.Affichez les mots se trouvant aux indices 2, 3 et 20
+print(mots[2])
+print(mots[3])
+print(mots[20]) // Ceci va lancer une erreur car l'indice maximum du tableau est 6.
+print()
 
-// 1.Créer une liste de dictionnaire contenant ces personnes
-var personnes:[[String:Any]] = [
-  ["nom":"Pierre", "sexe":"M", "annee_naissance":2010],
-  ["nom":"Michelle", "sexe":"F", "annee_naissance":2008],
-  ["nom":"Estelle", "sexe":"F", "annee_naissance":2005],
-  ["nom":"Quentin", "sexe":"M", "annee_naissance":2010],
-  ["nom":"Francois", "sexe":"M", "annee_naissance":1980],
-  ["nom":"Cristelle", "sexe":"F", "annee_naissance":1995],
-]
+// 3.Affichez tous les mots de la liste sous la forme Moyen de transport numéro [i] est [mot]
+for i in 0 ..< mots.count {
+  print("Moyen de transport numéro \(i) est \(mots[i])")
+}
+print()
 
-// 2.Affichez le nom de toutes les personnes concaténés avec leurs date de naissance, suivant le format “P est né en X” si c’est un garçon ou “P est née en X” si c’est une fille
+// 4.Trouvez et affichez les mots aux indices impairs puis pairs
+var pairs:[String] = []
+var impairs:[String] = []
 
-for i in 0 ..< personnes.count {
-  if personnes[i]["sexe"] as? String  == "M"{
-      print("\(personnes[i]["nom"] ?? "") est né en \(personnes[i]["annee_naissance"] ?? "")")
+
+for i in 0 ..< mots.count {
+  if i % 2 != 0 {
+    impairs.append(mots[i])
   }
   else {
-    print("\(personnes[i]["nom"] ?? "") est née en \(personnes[i]["annee_naissance"] ?? "")")
+    pairs.append(mots[i])
   }
+
+}
+
+print("Mots aux indices impairs")
+for j in 0 ..< impairs.count {
+  print(impairs[j])
 }
 print()
 
-// 3.Affichez les noms de toutes les personnes majeures
-
-print("Personnes majeures:")
-for i in 0 ..< personnes.count {
-  if (personnes[i]["annee_naissance"] as? Int ?? 0 <= 2024-18) {
-      print("\(personnes[i]["nom"] ?? "")")
-  }
+print("Mots aux indices pairs")
+for k in 0 ..< pairs.count {
+  print(pairs[k])
 }
 print()
 
-// 4.Afficher toutes les filles puis tous les garçons
-print("Toutes les filles:")
-for i in 0 ..< personnes.count {
-  if (personnes[i]["sexe"] as? String ?? "" == "F") {
-      print("\(personnes[i]["nom"] ?? "")")
-  }
-}
+// 5.Inversez l’ordre du tableau puis stockez le résultat dans un nouveau tableau
+var reversed:[String] = mots.reversed()
 print()
 
-print("Personnes majeures:")
-for i in 0 ..< personnes.count {
-    if (personnes[i]["sexe"] as? String ?? "" == "M") {
-      print("\(personnes[i]["nom"] ?? "")")
-  }
-}
-print()
+// 6.Insérez les mots suivants ‘camion’, ‘taxi’
 
-// 5.Ajoutez une nouvelle personne dans la liste
-personnes = personnes +  [["nom":"Jean", "sexe":"M", "annee_naissance":1960]]
+// En tête de liste
+mots = ["bateau", "voiture", "vélo", "avion", "bus", "train", "moto"]
+mots = ["camion","taxi"] + mots
 
-for i in 0 ..< personnes.count {
-    print("\(personnes[i]["nom"] ?? "")")
-}
+// En fin de liste
+mots = ["bateau", "voiture", "vélo", "avion", "bus", "train", "moto"]
+mots = mots + ["camion","taxi"]
+
+// À partir de l’indice 2
+mots = ["bateau", "voiture", "vélo", "avion", "bus", "train", "moto"]
+mots.insert(contentsOf: ["camion", "taxi"], at: 2)
+
 print()
